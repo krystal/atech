@@ -5,7 +5,7 @@ of our applications. This repository is an attempt to keep all this information 
 
 Feel free to use anything you find in here in your own projects.
 
- * [RubyGems](http://rubygems.com/gems/atech)
+ * [RubyGems](http://rubygems.org/gems/atech)
  * [Homepage](http://atechmedia.com)
  * [Issues](http://github.com/atech/atech/issues)
  
