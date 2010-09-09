@@ -1,3 +1,17 @@
+## This module provides additional functionality to the ActionController::Request#user_agent
+## method (request.user_agent to a layman). It add options for interogating the 
+## browser's name, operating system and version. For example.
+## 
+##    request.user_agent                #=> [raw user agent string]
+##    request.user_agent.os             #=> 'mac'
+##    request.user_agent.name           #=> 'safari'
+##    request.user_agent.version        #=> 5
+##    request.user_agent.os.windows?    #=> false
+##    request.user_agent.os.mac?        #=> true
+##    reuqest.user_agent.name.safari?   #=> false
+##
+## At the moment it supoprts IE, Firefox, Safari & Chrome.
+
 require 'active_support/string_inquirer'
 
 if defined?(ActionController::Request)
