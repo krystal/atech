@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'atech'
-  s.version = "1.0.15"
+  s.version = "1.0.16"
   s.platform = Gem::Platform::RUBY
   s.summary = "Libraries & Utilities from aTech Media"
   
