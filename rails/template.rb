@@ -20,6 +20,11 @@ gem "haml"
 gem "will_paginate", "~> 3.0.pre2"
 gem "atech"
 
+## Require the stnadard atech extensions
+file "config/initializers/atech.rb", <<-ATECH
+  require 'atech/base'
+ATECH
+
 ## Add something useful into the seeds file
 run "rm db/seeds.rb"
 file 'db/seeds.rb', <<-SEEDS
