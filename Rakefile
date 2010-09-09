@@ -1,3 +1,11 @@
+desc 'Run tests for the gem'
+task :default do
+  $LOAD_PATH.unshift File.join(File.expand_path('../', __FILE__), 'lib')
+  $LOAD_PATH.unshift File.join(File.expand_path('../', __FILE__), 'test')
+  Dir["#{File.expand_path('../test/', __FILE__)}/**/*.rb"].each {|t| require t}
+end
+
+desc 'Increment version, build a gem, push to RubyGems and commit the change to gemspec'
 task :build do
   unless `git status`.include?('nothing to commit')
     puts "Working copy is not clean.\nYou should commit before trying to build the gem."
