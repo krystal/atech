@@ -5,5 +5,6 @@
 ##    require 'atech/base'
 
 require 'atech/extensions/string'
-require 'atech/helpers'
+
 require 'atech/user_agent'
+require 'atech/helpers'
