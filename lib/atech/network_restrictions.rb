@@ -17,6 +17,8 @@
 ## You can also use this method to query IP addresses whenever required using
 ## `Atech::NetworkRestrictions.approved_ip?('123.123.123.123')`.
 
+require 'ipaddr'
+
 module Atech
   module NetworkRestrictions
     
@@ -38,6 +40,12 @@ module Atech
           end
         end
         return false
+      rescue ArgumentError => e
+        if e.message == 'invalid address'
+          return false
+        else
+          raise
+        end
       end
     end
     
