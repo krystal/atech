@@ -1,3 +1,8 @@
+## This file should be required in your 'db/seeds.rb' file if you'd like some
+## nice reporting whenever you run your database seed.
+##
+##    require 'atech/extensions/seeds'
+
 module ActiveRecord
   class Base
     def save(options = {})

@@ -1,3 +1,22 @@
+## Implements support for detecting whether an IP address belongs to a pre-defined
+## set of networks specified in CIDR notation. By default, it uses the standard
+## aTech Media IP addresses + localhost. The range of IPs can be changed by
+## changing `Atech::NetworkRestrictions.networks` to an array containing strings
+## of other networks.
+
+## You can use the included Atech::NetworkRestrictions::RouteConstraint in your
+## routing files to restrict routes. For example:
+##
+##    constraints Atech::NetworkRestrictions::RouteConstraint do
+##       namespace :admin do
+##         resources :accounts
+##         resources :tickets
+##       end
+##    end
+##
+## You can also use this method to query IP addresses whenever required using
+## `Atech::NetworkRestrictions.approved_ip?('123.123.123.123')`.
+
 module Atech
   module NetworkRestrictions
     

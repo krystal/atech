@@ -1,3 +1,13 @@
+## Include this file in your ApplicationHelper to add some standard and useful
+## HTML helpers for your Rails applications.
+##
+##    module ApplicationHelper
+##      include Atech::Helpers
+##      
+##      ... your own helpers..
+##
+##    end
+
 module Atech
   module Helpers
 
