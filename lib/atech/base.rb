@@ -6,3 +6,4 @@
 
 require 'atech/extensions/string'
 require 'atech/helpers'
+require 'atech/user_agent'

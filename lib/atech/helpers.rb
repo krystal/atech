@@ -45,5 +45,14 @@ module Atech
       image_tag([host,path].join, :class => options[:class], :width => options[:size], :height => options[:size])
     end
     
+    ## Return a set of three classes allowing you to determine the user agent of the clients computer.
+    ## This method can be called as part of the <html> or <body> class. It will return the
+    ## operating system, the browser's name and the version number.
+    def user_agent_classes
+      if defined?(Atech::UserAgent) && request.user_agent.is_a?(Atech::UserAgent)
+        "#{request.user_agent.os} #{request.user_agent.name} v#{request.user_agent.version}"
+      end
+    end
+    
   end
 end
