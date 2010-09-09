@@ -37,4 +37,18 @@ class String
     Digest::MD5.hexdigest(self)[0,length]
   end
   
+  ## Returns the first character of a string.
+  def first_character
+    case self[0]
+    when 194..223
+      return self[0,2]
+    when 224..239
+      return self[0,3]
+    when 240..244
+      return self[0,4]
+    else
+      return self[0,1]
+    end
+  end
+  
 end
