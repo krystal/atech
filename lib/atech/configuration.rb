@@ -17,6 +17,7 @@ module Atech
     ## Use Atech::Configuration#attributes.inspect to look at these.
     def inspect
       Array.new.tap do |a|
+        a << ""
         for key, value in attributes
           a << " * #{key.to_s.ljust(30)}: #{value.inspect.ljust(50)} [#{callers[key]}]"
         end
