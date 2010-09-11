@@ -6,18 +6,8 @@ class ConfigurationTest < Test::Unit::TestCase
   def setup
     @configuration = Atech::Configuration.new
   end
-  
-  def test_block_setup
-    @configuration.setup! do |config|
-      config.domain = 'codebasehq.com'
-      config.ssl_enabled = false
-    end
     
-    assert_equal 'codebasehq.com', @configuration.domain
-    assert_equal false, @configuration.ssl_enabled
-  end
-  
-  def test_manual_setting
+  def test_set
     @configuration.domain = 'codebasehq.com'
     assert_equal 'codebasehq.com', @configuration.domain
   end

@@ -6,20 +6,31 @@
 module Atech
   class Configuration
     
-    attr_reader :attributes
+    attr_reader :attributes, :callers
     
     def initialize(attributes = Hash.new)
       @attributes = attributes
+      @callers = Hash.new
     end
     
-    def setup!(&block)
-      block.call(self)
+    ## Return something helpful for this inspection. We don't need all the attributes.
+    ## Use Atech::Configuration#attributes.inspect to look at these.
+    def inspect
+      Array.new.tap do |a|
+        for key, value in attributes
+          a << " * #{key.to_s.ljust(30)}: #{value.inspect.ljust(50)} [#{callers[key]}]"
+        end
+      end.join("\n")
     end
     
+    ## Get or set as appropriate. If a requested attribute is not found NoMethodError
+    ## will be raised otherwise it will be returned. Requesting an attribute with a 
+    ## name suffixed with a question mark (?) will always return a boolean.
     def method_missing(method_name, value = nil)
       method_name = method_name.to_s
       if method_name[-1,1] == '='
         method_name.gsub!(/\=\z/, '')
+        callers[method_name] = caller.first
         attributes[method_name] = value
       else
         question = false
