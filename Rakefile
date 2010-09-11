@@ -28,5 +28,7 @@ task :build do
   system "git commit -m 'bump gem version to #{version}'"
   
   puts
+  puts "Tagging..."
+  system "git tag -a v#{version} -m 'tagging #{version}'"
   puts "You can now push the repository if you want..."
 end
