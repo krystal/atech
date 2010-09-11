@@ -54,5 +54,10 @@ module Atech
       end
     end
     
+    ## Sets the page title to be passed value or returns the current value if it's empty
+    def page_title(text = nil)
+      text ? (@page_title = text) : @page_title
+    end
+    
   end
 end
