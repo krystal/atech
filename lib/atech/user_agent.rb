@@ -30,6 +30,8 @@ module Atech
       when /(windows)|(win(\d{2}))/i then :windows
       when /linux/i then :linux
       when /macintosh/i then :mac
+      when /(iPhone)|(iPod)/ then :iphone
+      when /iPad/ then :ipad
       else :unknown
       end.to_s)
     end
@@ -48,6 +50,7 @@ module Atech
       @name_and_version ||= case self
       when /MSIE (\d+)/i then [:ie, $1.to_i]
       when /Firefox\/(\d+)/ then [:firefox, $1.to_i]
+      when /Version\/(\d+).*Mobile\/.+Safari/ then [:mobile_safari, $1.to_i]
       when /Chrome\/(\d+)/ then [:chrome, $1.to_i]
       when /Version\/(\d+).*Safari\//i then [:safari, $1.to_i]
       else [:unknown, 0]
