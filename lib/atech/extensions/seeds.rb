@@ -17,6 +17,11 @@ module ActiveRecord
       end
     end
     
+    def destroy(*args)
+      puts "\e[31mdestroyed\e[0m #{self.class.name} ##{self.id}"
+      super(*args)
+    end
+    
     def self.seedable?
       actual_count = self.count.to_i
       return (actual_count == 0) unless Rails.env.development?
