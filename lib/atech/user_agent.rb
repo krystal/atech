@@ -17,7 +17,7 @@ require 'active_support/string_inquirer'
 if defined?(ActionController::Request)
   class ActionController::Request
     def user_agent
-      Atech::UserAgent.new(env['HTTP_USER_AGENT'])
+      env['HTTP_USER_AGENT'].is_a?(String) ? Atech::UserAgent.new(env['HTTP_USER_AGENT']) : nil
     end
   end
 end
