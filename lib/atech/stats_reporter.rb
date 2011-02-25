@@ -1,6 +1,19 @@
 module Atech
   ## The aTech stats reporter return information about the application which
-  ## can be access by accessing the stats URL.
+  ## can be access by accessing the stats URL. This should be configured in your
+  ## application initializer.
+  ##
+  ## Atech::StatsReporter.application_name = 'my-application'
+  ## Atech::StatsReporter.application_key = 'your random key here'
+  ## Atech::StatsReporter.stats = Proc.new do
+  ##   {
+  ##     :last_activity => Event.last.created_at,
+  ##     :projects => Project.count,
+  ##     :repositories => Repositories::Repository.count,
+  ##     :disk_usage => Repositories::Repository.sum(:disk_usage)
+  ##   }
+  ## end
+  ##
   class StatsReporter
     
     class << self
