@@ -12,7 +12,7 @@ run "rm public/images/rails.png"
 run "rm app/views/layouts/application.html.erb"
 run "rm README"
 
-## Add a default route
+## Add a default route
 route "root :to => 'pages#home'"
 
 ## Add some gems
@@ -25,18 +25,18 @@ gem "basic_ssl"
 gem "hoptoad_notifier"
 gem "atech_cloud"
 
-## Require the stnadard atech extensions
+## Require the stnadard atech extensions
 file "config/initializers/atech.rb", <<-ATECH
   require 'atech/base'
 ATECH
 
-## Add something useful into the seeds file
+## Add something useful into the seeds file
 run "rm db/seeds.rb"
 file 'db/seeds.rb', <<-SEEDS
 require 'atech/extensions/seeds'
 SEEDS
 
-## Add something useful into the default helpers file
+## Add something useful into the default helpers file
 run "rm app/helpers/application_helper.rb"
 file 'app/helpers/application_helper.rb', <<-HELPER
 module ApplicationHelper
@@ -80,15 +80,19 @@ public/stylesheets/*.css
 IGNORE
 end
 
-## Add lib to the autoload path
+## Add lib to the autoload path
 application_rb = File.read("config/application.rb")
 application_rb.gsub!('# config.autoload_paths += %W(#{config.root}/extras)', 'config.autoload_paths += %W(#{config.root}/lib)')
 File.open("config/application.rb", 'w') { |f| f.write(application_rb)}
 
 ## Add jQuery
 inside "public/javascripts" do
-  get "http://code.jquery.com", "jquery-1.4.1.min.js", 'jquery.js'
+  get "http://code.jquery.com", "jquery-1.6.1.min.js", 'jquery.js'
   run "touch application.js"
+end
+
+inside "public/javascripts" do
+  get "http://github.com", "rails/jquery-ujs/raw/master/src/rails.js", "rails.js"
 end
 
 file 'public/stylesheets/scss/application.scss', <<-SASS
@@ -103,26 +107,104 @@ body { -webkit-font-smoothing: antialiased; margin:10px;}
 SASS
 
 file 'public/stylesheets/scss/_reset.scss', <<-RESET
-html { color: #000; background: #FFF; }
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td { margin: 0; padding: 0; }
-li { list-style: none; }
-h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
-pre, form { font-style: normal; font-weight: normal; }
-fieldset { border: 0; }
-legend { color: #000; }
-input, textarea { margin: 0; padding: 0; font-family: inherit; font-size: inherit; font-weight: inherit; *font-size: 100%; }
-p, blockquote { margin: 0; padding: 0; }
-th { margin: 0; padding: 0; font-style: normal; font-weight: normal; text-align: left; }
-table { border-collapse: collapse; border-spacing: 0; }
-img { border: 0; }
-address { font-style: normal; font-weight: normal; }
-caption { font-style: normal; font-weight: normal; text-align: left; }
-cite, dfn, em, strong, var { font-style: normal; font-weight: normal; }
-q:before, q:after { content: ''; }
-abbr, acronym { border: 0; font-variant: normal; }
-sup { vertical-align: text-top; }
-sub { vertical-align: text-bottom; }
-select { font-family: inherit; font-size: inherit; font-weight: inherit; *font-size: 100%; }
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+    font-weight:normal;
+}
+
+body {
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+ul li { list-style:none; }
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+b,strong { font-weight:bold;}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#feffc0;
+    color:#000; 
+    padding:1px;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;   
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
 
 .hidden { display:none !important;}
 div.field_with_errors { display:inline !important;}
