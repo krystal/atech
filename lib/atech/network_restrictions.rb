@@ -26,7 +26,7 @@ module Atech
       attr_accessor :networks
       
       def networks
-        @networks ||= ['127.0.0.1/32', '109.224.145.104/29', '188.65.183.34/32', '109.104.109.4/32', '10.0.1.0/24']
+        @networks ||= ['127.0.0.1/32', '109.104.109.4/32', '10.0.1.0/24']
       end
       
       def approved_ip?(requested_ip)
