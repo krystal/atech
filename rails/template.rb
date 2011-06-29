@@ -17,13 +17,15 @@ route "root :to => 'pages#home'"
 
 ## Add some gems
 gem "haml"
-gem "will_paginate", "~> 3.0.pre2"
+gem "sass"
+gem "will_paginate"
 gem "atech"
 gem "unicorn"
 gem "capistrano"
 gem "basic_ssl"
 gem "hoptoad_notifier"
 gem "atech_cloud"
+gem "dynamic_form"
 
 ## Require the stnadard atech extensions
 file "config/initializers/atech.rb", <<-ATECH
@@ -61,8 +63,8 @@ file 'app/views/layouts/application.html.haml', <<-HAML
 %html
   %head
     %title== \#{@page_title} - Application 
-    = stylesheet_link_tag 'reset', 'application'
-    = javascript_include_tag 'jquery', 'application'
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'jquery', 'rails', 'application'
   %body
     = yield
 HAML
@@ -88,6 +90,7 @@ File.open("config/application.rb", 'w') { |f| f.write(application_rb)}
 ## Add jQuery
 inside "public/javascripts" do
   get "http://code.jquery.com", "jquery-1.6.1.min.js", 'jquery.js'
+  get "https://raw.github.com", "rails/jquery-ujs/master/src/rails.js", "rails.js"
   run "touch application.js"
 end
 
