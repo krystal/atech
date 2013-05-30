@@ -26,7 +26,15 @@ module Atech
       attr_accessor :networks
       
       def networks
-        @networks ||= ['127.0.0.1/32', '10.16.0.0/24', '10.0.2.0/24', '109.104.109.0/26', '109.104.109.112/28', '2001:9d8:2005:1::/64', '2001:9d8:2005:12::/64', '2a01:348:311:2::/64']
+        @networks ||= [
+          '127.0.0.1/32',         # localhost
+          '185.22.208.0/25',      # infra
+          '10.17.0.0/24',         # vpn
+          '10.0.2.0/24',          # office
+          '2a00:67a0:a:1::/64',   # infra ipv6
+          '2a00:67a0:a:5::/64',   # vpn ipv6
+          '2a01:348:311:2::/64'   # office ipv6
+        ]
       end
       
       def approved_ip?(requested_ip)
