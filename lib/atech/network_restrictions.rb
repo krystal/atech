@@ -29,7 +29,6 @@ module Atech
         @networks ||= [
           '127.0.0.1/32',         # localhost
           '185.22.208.0/25',      # infra
-          '109.104.109.0/26',     # bournemouth network
           '10.0.0.0/16',          # vpn nets
           '2a00:67a0:a:1::/64',   # infra ipv6
           '2a00:67a0:a:5::/64',   # vpn ipv6
