@@ -33,7 +33,7 @@ module Atech
           '2a00:67a0:a:1::/64',   # infra ipv6
           '2a00:67a0:a:5::/64',   # vpn ipv6
           '2a00:67a0:a:6::/64',   # office ipv6
-          '2001:9d8:2005:1::/64'  # bournemouth ipv6
+          '2001:470:1f1d:5::/64', # AC home ipv6
         ]
       end
       
