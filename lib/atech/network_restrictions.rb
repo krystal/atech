@@ -21,10 +21,10 @@ require 'ipaddr'
 
 module Atech
   module NetworkRestrictions
-    
+
     class << self
       attr_accessor :networks
-      
+
       def networks
         @networks ||= [
           '127.0.0.1/32',         # localhost
@@ -33,14 +33,14 @@ module Atech
           '2a00:67a0:a:1::/64',   # infra ipv6
           '2a00:67a0:a:5::/64',   # vpn ipv6
           '2a02:8010:6005::/64',  # office ipv6
-          '2001:470:1f1d:5::/64', # AC home ipv6
+          '2a02:8011:701f:0::/64'
         ]
       end
-      
+
       def approved_ip?(requested_ip)
         !!approved_ip(requested_ip)
       end
-      
+
       def approved_ip(requested_ip)
         self.networks.each do |i|
           if IPAddr.new(i).include?(requested_ip)
@@ -56,12 +56,12 @@ module Atech
         end
       end
     end
-    
+
     class RouteConstraint
       def self.matches?(request)
         Atech::NetworkRestrictions.approved_ip?(request.ip)
       end
     end
-    
+
   end
 end
