@@ -32,7 +32,7 @@ module Atech
           '10.0.0.0/16',          # vpn nets
           '2a00:67a0:a:1::/64',   # infra ipv6
           '2a00:67a0:a:5::/64',   # vpn ipv6
-          '2a02:8010:6005::/64',  # office ipv6
+          '2a02:8010:6006::/64',  # office ipv6
           '2a02:8011:701f:0::/64'
         ]
       end
