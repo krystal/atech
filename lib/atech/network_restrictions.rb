@@ -30,6 +30,7 @@ module Atech
           '127.0.0.1/32',         # localhost
           '185.22.208.0/25',      # infra
           '10.0.0.0/16',          # vpn nets
+          '10.210.0.0/16',          # vpn nets
           '2a00:67a0:a:1::/64',   # infra ipv6
           '2a00:67a0:a:5::/64',   # vpn ipv6
           '2a02:8010:6006::/64',  # office ipv6
